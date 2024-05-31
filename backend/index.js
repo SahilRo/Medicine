@@ -19,6 +19,7 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
+app.use(compression());
 app.get("/", (req, res) => {
   res.json("Hello");
 });
