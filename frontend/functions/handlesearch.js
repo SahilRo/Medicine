@@ -6,7 +6,7 @@ const handleSearch = async (query, setMedicines) => {
     console.log('Sending search request for:', query);
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/medicines/search',
+        'https://medicine-mauve.vercel.app/api/medicines/search',
         { name: query }
       );
       console.log('Received response:', response.data);
