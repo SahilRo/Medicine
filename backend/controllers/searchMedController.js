@@ -1,4 +1,4 @@
-const { getMedicines, fetchCSV } = require('../fetchCSV');
+const { getMedicinesFromJSON } = require('../load_file');
 
 const searchMedicine = async (req, res) => {
   console.log("In search func");
@@ -9,10 +9,7 @@ const searchMedicine = async (req, res) => {
   }
 
   try {
-    // Ensure the CSV data is loaded
-    await fetchCSV();
-
-    const medicines = getMedicines();
+    const medicines = await getMedicinesFromJSON();
 
     console.log("Search name:", name);
     console.log("Medicines:", medicines.length);
