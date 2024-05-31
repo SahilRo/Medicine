@@ -13,7 +13,7 @@ const Medicines = () => {
 
   useEffect(() => {
     const fetchMedicines = async () => {
-      const response = await axios.get('http://localhost:5000/api/medicines/getList');
+      const response = await axios.get('https://medicine-mauve.vercel.app/api/medicines/getList');
       setMedicines(response.data);
     };
 
