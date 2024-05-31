@@ -7,4 +7,4 @@ const getMedicinesFromJSON = async () => {
   return JSON.parse(data);
 };
 
-export default getMedicinesFromJSON;
+module.exports =  getMedicinesFromJSON;
