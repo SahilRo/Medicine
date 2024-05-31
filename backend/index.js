@@ -19,14 +19,15 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
-app.use(compression());
 app.get("/", (req, res) => {
   res.json("Hello");
 });
 app.use('/api/users', userRoutes);
+app.use(feedback);
+app.use(compression());
 app.use(searchingRoutes);
 app.use(getlist);
-app.use(feedback);
+
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
