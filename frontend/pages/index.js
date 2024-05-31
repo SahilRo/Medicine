@@ -8,7 +8,6 @@ export default function Home() {
       <Head>
         <title>Medicines</title>
         <meta name="description" content="A platform to find Medicines" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <img src="/images/bg2.webp" alt="Background Image" className="absolute top-0 left-0 w-full h-full object-cover z-0" />
