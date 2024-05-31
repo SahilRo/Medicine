@@ -5,7 +5,7 @@ const handlefeedback = async (e,name,setName,feedback,setFeedback) => {
     e.preventDefault();
 
     try {
-        await axios.post('http://localhost:5000/api/feedback', { name, feedback });
+        await axios.post('https://medicine-mauve.vercel.app/api/feedback', { name, feedback });
         alert('Feedback submitted successfully!');
         setName('');
         setFeedback('');
