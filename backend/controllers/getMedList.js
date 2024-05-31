@@ -1,4 +1,4 @@
-const { getMedicinesFromJSON } = require('../load_file');
+const  getMedicinesFromJSON  = require('../load_file');
 
 const getMedList = async (req, res) => {
   try {
