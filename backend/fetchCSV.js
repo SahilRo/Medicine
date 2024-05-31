@@ -1,16 +1,17 @@
 const axios = require('axios');
 const csv = require('csv-parser');
 const { PassThrough } = require('stream');
+const NodeCache = require('node-cache');
 
 const GOOGLE_DRIVE_FILE_ID = '1hWoim6wHt78Vcu_3xWuEQx0K6aTyHhS8';
 const CSV_URL = `https://drive.google.com/uc?id=${GOOGLE_DRIVE_FILE_ID}&export=download`;
 
-let medicines = [];
+const cache = new NodeCache({ stdTTL: 3600 }); // Cache for 1 hour
 let isCSVLoaded = false;
 
 const fetchCSV = async () => {
   if (isCSVLoaded) {
-    return medicines;
+    return cache.get('medicines');
   }
 
   try {
@@ -18,7 +19,7 @@ const fetchCSV = async () => {
     const stream = response.data.pipe(new PassThrough());
 
     return new Promise((resolve, reject) => {
-      medicines = [];
+      let medicines = [];
       stream
         .pipe(csv())
         .on('data', (row) => {
@@ -27,6 +28,7 @@ const fetchCSV = async () => {
         .on('end', () => {
           isCSVLoaded = true;
           console.log('CSV file successfully processed');
+          cache.set('medicines', medicines);
           resolve(medicines);
         })
         .on('error', (error) => {
@@ -39,6 +41,8 @@ const fetchCSV = async () => {
   }
 };
 
-const getMedicines = () => medicines;
+const getMedicines = () => {
+  return cache.get('medicines') || [];
+};
 
 module.exports = { fetchCSV, getMedicines };
