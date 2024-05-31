@@ -31,7 +31,6 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
-      fetchCSV();
     });
   })
   .catch((error) => console.error('Error connecting to MongoDB:', error));
