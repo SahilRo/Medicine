@@ -27,8 +27,8 @@ app.use('/api/users', userRoutes);
 app.use(feedback);
 app.use((req, res, next) => {
   if (req.path.startsWith('/search') || req.path.startsWith('/getlist')) {
-    // Apply compression only for '/search' and '/getlist' routes
-    compression()(req, res, next);
+    // Apply compression only for '/search' and '/getlist' routes with a 3MB limit
+    compression({ threshold: 3 * 1024 * 1024 })(req, res, next);
   } else {
     // Pass control to the next middleware
     next();
