@@ -11,7 +11,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/users/register', { name, email, password });
+      const response = await axios.post('https://medicine-mauve.vercel.app/api/users/register', { name, email, password });
       localStorage.setItem('token', response.data.token);
       router.push('/');
     } catch (error) {
