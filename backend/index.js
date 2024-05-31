@@ -6,6 +6,7 @@ const searchingRoutes = require('./routes/searchMedRoutes');
 const { fetchCSV } = require('./fetchCSV');
 const getlist = require('./routes/getMedListRoutes')
 const feedback = require('./routes/feedbackRoutes');
+const compression = require('compression'); // Import compression middleware
 
 const cors = require('cors');
 dotenv.config();
@@ -24,10 +25,17 @@ app.get("/", (req, res) => {
 });
 app.use('/api/users', userRoutes);
 app.use(feedback);
-app.use(compression());
+app.use((req, res, next) => {
+  if (req.path.startsWith('/search') || req.path.startsWith('/getlist')) {
+    // Apply compression only for '/search' and '/getlist' routes
+    compression()(req, res, next);
+  } else {
+    // Pass control to the next middleware
+    next();
+  }
+});
 app.use(searchingRoutes);
 app.use(getlist);
-
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
