@@ -15,13 +15,13 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
-app.get("/",(req,res){
+app.get("/", (req, res) => {
   res.json("Hello");
 });
 app.use('/api/users', userRoutes);
-app.use(searchingRoutes);
-app.use(getlist);
-app.use(feedback);
+app.use('/api/search', searchingRoutes);
+app.use('/api/medlist', getlist);
+app.use('/api/feedback', feedback);
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
