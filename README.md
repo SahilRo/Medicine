@@ -15,3 +15,11 @@ Key Features:
 8.	Feedback System: Users can provide feedback, which is stored in the backend.
 9.	Alerts: Implemented alerts for successful feedback submission.
 10.	Deployment: Deployed the application using Vercel for easy accessibility.
+
+
+
+https://github.com/SahilRo/Medicine/assets/91819548/1e1573cb-6b05-4e4b-90ef-287205cd69e1
+
+
+
+    
