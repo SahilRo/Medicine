@@ -1,3 +1,4 @@
+LIVE LINK: https://medicine-184c.vercel.app/
 Project Setup:
 1.	Frontend: Built using React.js and Next.js for server-side rendering.
 2.	Styling: Tailwind CSS for responsive and utility-first styling.
